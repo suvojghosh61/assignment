@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Assignment">
+        <p class="slds-var-p-around_small">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="around-small" size="12">
+                    <lightning-input name="Title__c" class="validate" type="text" label="Title" value={newRecord.Title__c} required></lightning-input>
+                    <lightning-input name="Description__c" class="validate" type="textarea" value={newRecord.Description__c} label="Description" required></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="12">
+                    <lightning-input name="DueDate__c" class="validate" type="date" label="Due Date" value={newRecord.DueDate__c} required></lightning-input>
+                    <template if:true={statusValues.data}>
+                    <lightning-combobox name="Status__c" class="validate" label="Status" value={newRecord.Status__c}
+                    options={statusValues.data.values} required></lightning-combobox>
+                </template>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="slds-var-p-top_small">
+                    <lightning-button class="slds-align_absolute-center" label={buttonText} onclick={createRecord}></lightning-button>    
+                </lightning-layout-item>
+            </lightning-layout>
+        </p>
+    </lightning-card>
+</template>
